@@ -1,7 +1,122 @@
 ---
-import { EssentialsLayout } from "@indirecttek/essentials-engine";
+import { Navbar, Hero, ServicesGrid, ContactForm, Footer } from "@indirecttek/essentials-engine";
 import { siteConfig } from "../config/siteConfig";
+import TrustBand from "../components/TrustBand.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
 import "../styles/global.css";
+
+// Generate structured data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": siteConfig.businessName,
+  "description": siteConfig.seo.description,
+  "telephone": siteConfig.contactInfo.phone,
+  "email": siteConfig.contactInfo.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": siteConfig.contactInfo.address,
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "47"
+  },
+  "priceRange": "$$"
+};
 ---
 
-<EssentialsLayout config={siteConfig} />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{siteConfig.seo.title}</title>
+    <meta name="title" content={siteConfig.seo.title} />
+    <meta name="description" content={siteConfig.seo.description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={siteConfig.seo.title} />
+    <meta property="og:description" content={siteConfig.seo.description} />
+    <meta property="og:image" content={siteConfig.heroSection.imageUrl} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={siteConfig.seo.title} />
+    <meta property="twitter:description" content={siteConfig.seo.description} />
+    <meta property="twitter:image" content={siteConfig.heroSection.imageUrl} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+
+  <body
+    class="bg-[color:var(--color-background)] text-[color:var(--color-foreground)] min-h-screen antialiased"
+    style={`
+      --color-primary: ${siteConfig.theme.primary};
+      --color-secondary: ${siteConfig.theme.secondary};
+      --color-accent: ${siteConfig.theme.accent};
+      --color-background: ${siteConfig.theme.background};
+      --color-foreground: ${siteConfig.theme.foreground};
+    `}
+  >
+    <Navbar config={siteConfig} />
+
+    <main>
+      <!-- Hero Section -->
+      <Hero config={siteConfig} />
+
+      <!-- Trust Band - Credibility indicators -->
+      <TrustBand />
+
+      <!-- Services Section -->
+      <section id="services" class="py-16 md:py-20">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-primary)] mb-4">
+              Our Services
+            </h2>
+            <p class="text-lg text-[color:var(--color-foreground)]/70 max-w-2xl mx-auto">
+              Quality work you can count on, every time
+            </p>
+          </div>
+          <ServicesGrid config={siteConfig} />
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <TestimonialsSection />
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-16 md:py-20 bg-[color:var(--color-background)]">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-primary)] mb-4">
+              Get Your Free Quote
+            </h2>
+            <p class="text-lg text-[color:var(--color-foreground)]/70 max-w-2xl mx-auto">
+              Ready to get started? Fill out the form below and we'll get back to you within 24 hours.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+            <ContactForm config={siteConfig} />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer config={siteConfig} />
+  </body>
+</html>

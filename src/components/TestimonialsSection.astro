@@ -1,0 +1,67 @@
+---
+import { siteConfig } from "../config/siteConfig";
+
+// Default testimonials for service businesses
+// Claude will generate custom ones based on the business during automation
+const testimonials = [
+  {
+    quote: "Absolutely fantastic service! They showed up on time, did exactly what they promised, and my yard has never looked better. Highly recommend to anyone in the area.",
+    author: "Sarah M.",
+    location: "Raleigh, NC",
+    stars: 5,
+  },
+  {
+    quote: "Professional, reliable, and fairly priced. I've been using them for over a year now and they consistently exceed my expectations. A+ work every time.",
+    author: "James T.",
+    location: "Durham, NC",
+    stars: 5,
+  },
+  {
+    quote: "Finally found a company I can trust! Great communication, quality work, and they treat my property like it's their own. Won't use anyone else.",
+    author: "Michelle R.",
+    location: "Cary, NC",
+    stars: 5,
+  },
+];
+---
+
+<section class="py-16 md:py-20 bg-[color:var(--color-secondary)]/10">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-primary)] mb-4">
+        What Our Customers Say
+      </h2>
+      <p class="text-lg text-[color:var(--color-foreground)]/70 max-w-2xl mx-auto">
+        Don't just take our word for it - hear from our satisfied customers
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-[color:var(--color-background)] rounded-xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <!-- Stars -->
+          <div class="flex gap-1 mb-4">
+            {Array.from({ length: testimonial.stars }).map(() => (
+              <span class="text-yellow-400 text-xl">★</span>
+            ))}
+          </div>
+
+          <!-- Quote -->
+          <p class="text-[color:var(--color-foreground)]/80 mb-6 leading-relaxed">
+            "{testimonial.quote}"
+          </p>
+
+          <!-- Author -->
+          <div class="border-t border-[color:var(--color-foreground)]/10 pt-4">
+            <p class="font-semibold text-[color:var(--color-primary)]">
+              {testimonial.author}
+            </p>
+            <p class="text-sm text-[color:var(--color-foreground)]/60">
+              {testimonial.location}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

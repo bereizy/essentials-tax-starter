@@ -1,0 +1,35 @@
+---
+// Trust indicators for service businesses
+// These can be customized per business in the future via siteConfig
+const trustPoints = [
+  {
+    icon: "✓",
+    label: "Licensed & Insured",
+  },
+  {
+    icon: "⭐",
+    label: "5-Star Rated",
+  },
+  {
+    icon: "🏠",
+    label: "Locally Owned",
+  },
+  {
+    icon: "💯",
+    label: "Satisfaction Guaranteed",
+  },
+];
+---
+
+<section class="bg-[color:var(--color-primary)] py-6">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+      {trustPoints.map((point) => (
+        <div class="flex items-center justify-center gap-2 text-white">
+          <span class="text-xl md:text-2xl">{point.icon}</span>
+          <span class="text-sm md:text-base font-medium">{point.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
