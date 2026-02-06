@@ -1,5 +1,5 @@
 ---
-import { Navbar, Hero, ServicesGrid, ContactForm, Footer } from "@indirecttek/essentials-engine";
+import { Navbar, Hero, ServicesGrid, ContactForm, Footer, CalendlyWidget, PaymentButton } from "@indirecttek/essentials-engine";
 import { siteConfig } from "../config/siteConfig";
 import TrustBand from "../components/TrustBand.astro";
 import TestimonialsSection from "../components/TestimonialsSection.astro";
@@ -93,6 +93,54 @@ const structuredData = {
             </p>
           </div>
           <ServicesGrid config={siteConfig} />
+        </div>
+      </section>
+
+      <!-- Book Now Section -->
+      <section id="book" class="py-16 md:py-20 bg-[color:var(--color-primary)]/5">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-[color:var(--color-primary)] mb-4">
+              Ready to Get Started?
+            </h2>
+            <p class="text-lg text-[color:var(--color-foreground)]/70 max-w-2xl mx-auto">
+              Schedule your tax consultation online or pay a retainer to secure your spot.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Schedule Option -->
+            <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+              <div class="w-16 h-16 bg-[color:var(--color-primary)]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[color:var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-[color:var(--color-primary)] mb-3">
+                Schedule Consultation
+              </h3>
+              <p class="text-[color:var(--color-foreground)]/70 mb-6">
+                Pick a time that works for you. We'll discuss your tax situation and how we can help.
+              </p>
+              <CalendlyWidget config={siteConfig} />
+            </div>
+
+            <!-- Payment Option -->
+            <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+              <div class="w-16 h-16 bg-[color:var(--color-accent)]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[color:var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-[color:var(--color-primary)] mb-3">
+                Secure Your Spot
+              </h3>
+              <p class="text-[color:var(--color-foreground)]/70 mb-6">
+                Ready to proceed? Pay your retainer online to lock in your appointment.
+              </p>
+              <PaymentButton config={siteConfig} />
+            </div>
+          </div>
         </div>
       </section>
 

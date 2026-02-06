@@ -81,4 +81,22 @@ export const siteConfig: SiteConfig = {
       "business consultation meeting",
     ],
   },
+
+  // Integrations - Scheduling, Payments, Email
+  integrations: {
+    scheduling: {
+      provider: "calendly",
+      url: "https://calendly.com/triangletax-demo/consultation",
+      buttonText: "Schedule Consultation",
+    },
+    payments: {
+      provider: "stripe",
+      mode: "deposit",
+      depositAmount: 15000, // $150.00 retainer
+      buttonText: "Pay $150 Retainer",
+    },
+    email: {
+      provider: "resend",
+    },
+  },
 };
